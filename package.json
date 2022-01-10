@@ -18,6 +18,7 @@
   "homepage": "https://github.com/JuanWebDeveloper/TaskApp-By-Console-With-NodeJS#readme",
   "dependencies": {
     "colors": "^1.4.0",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "uuid": "^8.3.2"
   }
 }

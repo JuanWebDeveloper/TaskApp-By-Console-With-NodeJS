@@ -6,6 +6,7 @@ const main = async () => {
   do {
     optionSelected = await mainNavigation();
 
+    // Handle navigation options
     switch (optionSelected) {
       case 'addTask':
         console.log('\n');
