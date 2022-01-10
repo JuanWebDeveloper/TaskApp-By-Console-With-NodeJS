@@ -1,5 +1,10 @@
-const main = () => {
-  console.log('Task app started');
+const { mainNavigation } = require('./helpers/inquirer');
+
+const main = async () => {
+  let optionSelected = null;
+
+  optionSelected = await mainNavigation();
+  console.log(optionSelected);
 };
 
 main();

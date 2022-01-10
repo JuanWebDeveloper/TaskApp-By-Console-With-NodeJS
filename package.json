@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/JuanWebDeveloper/TaskApp-By-Console-With-NodeJS/issues"
   },
-  "homepage": "https://github.com/JuanWebDeveloper/TaskApp-By-Console-With-NodeJS#readme"
+  "homepage": "https://github.com/JuanWebDeveloper/TaskApp-By-Console-With-NodeJS#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.2.0"
+  }
 }
