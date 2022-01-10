@@ -18,6 +18,21 @@ const mainNavigation = async () => {
   return optionSelected;
 };
 
+// Stop program execution
+const stopExecution = async () => {
+  const config = [
+    {
+      type: 'input',
+      name: 'stop',
+      message: `Press ${'enter'.cyan} to continue...`,
+    },
+  ];
+
+  console.log('\n');
+  await inquirer.prompt(config);
+};
+
 module.exports = {
   mainNavigation,
+  stopExecution,
 };
