@@ -1,1 +1,5 @@
-console.log('Task App');
+const main = () => {
+  console.log('Task app started');
+};
+
+main();
