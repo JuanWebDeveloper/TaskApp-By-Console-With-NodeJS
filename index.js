@@ -1,6 +1,9 @@
 const { mainNavigation, stopExecution, readDataInput } = require('./helpers/inquirer');
+const Tasks = require('./models/tasks');
 
 const main = async () => {
+  const tasks = new Tasks();
+
   let optionSelected = null;
 
   do {
@@ -10,9 +13,11 @@ const main = async () => {
     switch (optionSelected) {
       case 'addTask':
         console.log('\n');
-        const rest = await readDataInput('Enter the task description:');
+        const taskDescription = await readDataInput('Enter the task description:');
 
-        console.log(rest);
+        tasks.createTask(taskDescription);
+
+        console.log('\n  Task created successfully!  '.white.bgGreen);
         break;
     }
 
