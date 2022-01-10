@@ -1,0 +1,19 @@
+{
+  "name": "taskapp-by-console",
+  "version": "1.0.0",
+  "description": "Application of tasks by interactive console",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JuanWebDeveloper/TaskApp-By-Console-With-NodeJS.git"
+  },
+  "author": "Juan Vargas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanWebDeveloper/TaskApp-By-Console-With-NodeJS/issues"
+  },
+  "homepage": "https://github.com/JuanWebDeveloper/TaskApp-By-Console-With-NodeJS#readme"
+}
