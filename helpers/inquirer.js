@@ -32,7 +32,30 @@ const stopExecution = async () => {
   await inquirer.prompt(config);
 };
 
+// Read user data
+const readDataInput = async (message) => {
+  const config = [
+    {
+      type: 'input',
+      name: 'dataInput',
+      message,
+      validate(value) {
+        // Validates user input
+        if (value.length >= 1) return true;
+
+        return '  Please enter a value  '.white.bgRed;
+      },
+    },
+  ];
+
+  const { dataInput } = await inquirer.prompt(config);
+
+  // Information provided by the user
+  return dataInput;
+};
+
 module.exports = {
   mainNavigation,
   stopExecution,
+  readDataInput,
 };
