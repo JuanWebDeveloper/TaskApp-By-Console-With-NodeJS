@@ -44,6 +44,25 @@ class Tasks {
       console.log(`${listPosition} ${taskDescription} ${'-'.cyan} ${taskStatus} ${'-'.cyan} ${taskDate}`);
     });
   }
+
+  // Method to change the status of tasks in the database
+  changeTasksStatusInDB(tasksIds) {
+    tasksIds.forEach((taskId) => {
+      const task = this.taskList[taskId];
+
+      if (!task.taskCompleted) {
+        task.taskCompleted = true;
+        task.completedAt = new Date().toISOString();
+      }
+    });
+
+    this.convertListToArray.forEach((task) => {
+      if (!tasksIds.includes(task.id)) {
+        this.taskList[task.id].taskCompleted = false;
+        this.taskList[task.id].completedAt = null;
+      }
+    });
+  }
 }
 
 module.exports = Tasks;

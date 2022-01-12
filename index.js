@@ -31,6 +31,10 @@ const main = async () => {
 
       case 'changeTasksStatus':
         const tasksIds = await navigationChangeStatus(tasks.convertListToArray);
+
+        tasks.changeTasksStatusInDB(tasksIds);
+
+        console.log('\n  The status of the tasks was updated successfully!  '.white.bgGreen);
         break;
     }
 
