@@ -51,7 +51,18 @@ const optChangeTasksStatus = [
   },
 ];
 
+// Options to update a task
+const optUpdateTask = [
+  {
+    type: 'list',
+    name: 'taskToUpdate',
+    message: 'Select the task to update',
+    choices: [],
+  },
+];
+
 module.exports = {
   optMainNavigation,
   optChangeTasksStatus,
+  optUpdateTask,
 };
