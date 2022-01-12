@@ -41,6 +41,17 @@ const optMainNavigation = [
   },
 ];
 
+// Options to change the status of tasks
+const optChangeTasksStatus = [
+  {
+    type: 'checkbox',
+    name: 'tasksIds',
+    message: 'Select the tasks to change the status',
+    choices: [],
+  },
+];
+
 module.exports = {
   optMainNavigation,
+  optChangeTasksStatus,
 };
