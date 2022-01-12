@@ -36,6 +36,12 @@ const main = async () => {
 
         console.log('\n  The status of the tasks was updated successfully!  '.white.bgGreen);
         break;
+
+      case 'listCompletedTasks':
+        break;
+
+      case 'listIncompletedTasks':
+        break;
     }
 
     // Save the tasks in the database
