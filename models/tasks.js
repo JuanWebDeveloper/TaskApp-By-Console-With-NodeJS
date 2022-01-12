@@ -36,10 +36,10 @@ class Tasks {
     this.convertListToArray.forEach((task, index) => {
       const { taskDescription, createdAt, taskCompleted, completedAt } = task;
       const creationDateFormatted = `${moment(createdAt).format('MMMM Do YYYY, h:mm:ss a')}`.cyan;
-      const completionDateFormatted = completedAt && `${moment(completedAt).format('MMMM Do YYYY, h:mm:ss a')}`.cyan;
+      const completionDateFormatted = taskCompleted && `${moment(completedAt).format('MMMM Do YYYY, h:mm:ss a')}`.cyan;
       const listPosition = `${index + 1}.`.cyan;
       const taskStatus = taskCompleted ? 'Completed'.green : 'Pending'.red;
-      const taskDate = completedAt ? `CompletedAt = ${completionDateFormatted}` : `CreatedAt = ${creationDateFormatted}`;
+      const taskDate = taskCompleted ? `CompletedAt = ${completionDateFormatted}` : `CreatedAt = ${creationDateFormatted}`;
 
       console.log(`${listPosition} ${taskDescription} ${'-'.cyan} ${taskStatus} ${'-'.cyan} ${taskDate}`);
     });
