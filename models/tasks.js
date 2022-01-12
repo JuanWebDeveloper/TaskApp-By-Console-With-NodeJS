@@ -35,11 +35,9 @@ class Tasks {
   listTasks() {
     this.convertListToArray.forEach((task, index) => {
       const { taskDescription, createdAt, taskCompleted, completedAt } = task;
-      const creationDateFormatted = `${moment(createdAt).format('MMMM Do YYYY, h:mm:ss a')}`.cyan;
-      const completionDateFormatted = taskCompleted && `${moment(completedAt).format('MMMM Do YYYY, h:mm:ss a')}`.cyan;
       const listPosition = `${index + 1}.`.cyan;
       const taskStatus = taskCompleted ? 'Completed'.green : 'Pending'.red;
-      const taskDate = taskCompleted ? `CompletedAt = ${completionDateFormatted}` : `CreatedAt = ${creationDateFormatted}`;
+      const taskDate = taskCompleted ? 'CompletedAt = ' + `${completedAt}`.cyan : 'CreatedAt = ' + `${createdAt}`.cyan;
 
       console.log(`${listPosition} ${taskDescription} ${'-'.cyan} ${taskStatus} ${'-'.cyan} ${taskDate}`);
     });
@@ -52,7 +50,7 @@ class Tasks {
 
       if (!task.taskCompleted) {
         task.taskCompleted = true;
-        task.completedAt = new Date().toISOString();
+        task.completedAt = `${moment(new Date().toISOString()).format('MMMM Do YYYY, h:mm:ss a')}`;
       }
     });
 
