@@ -1,5 +1,5 @@
 const Tasks = require('./models/tasks');
-const { mainNavigation, stopExecution, readDataInput } = require('./helpers/inquirer');
+const { mainNavigation, stopExecution, readDataInput, navigationChangeStatus } = require('./helpers/inquirer');
 const { saveDB, readDB } = require('./helpers/handleDB');
 
 const main = async () => {
@@ -30,7 +30,7 @@ const main = async () => {
         break;
 
       case 'changeTasksStatus':
-        console.log(tasks.convertListToArray);
+        const tasksIds = await navigationChangeStatus(tasks.convertListToArray);
         break;
     }
 
