@@ -6,6 +6,9 @@ const main = async () => {
   const tasks = new Tasks();
   const tasksInDB = readDB();
 
+  // Load tasks from DB
+  tasksInDB.length > 0 && tasks.loadTasksFromDB(tasksInDB);
+
   let optionSelected = null;
 
   do {

@@ -22,6 +22,13 @@ class Tasks {
 
     this.taskList[task.id] = task;
   }
+
+  // Method to load the tasks from the database
+  loadTasksFromDB(tasks) {
+    tasks.forEach((task) => {
+      this.taskList[task.id] = task;
+    });
+  }
 }
 
 module.exports = Tasks;
