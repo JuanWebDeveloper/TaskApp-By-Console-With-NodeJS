@@ -1,3 +1,4 @@
+const { saveDB } = require('./helpers/handleDB');
 const { mainNavigation, stopExecution, readDataInput } = require('./helpers/inquirer');
 const Tasks = require('./models/tasks');
 
@@ -23,6 +24,9 @@ const main = async () => {
         console.log(tasks.convertListToArray);
         break;
     }
+
+    // Save the tasks in the database
+    saveDB(tasks.convertListToArray);
 
     // Stops execution when an option is selected
     optionSelected !== 'exit' && (await stopExecution());
