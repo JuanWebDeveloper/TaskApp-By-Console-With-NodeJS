@@ -3,7 +3,7 @@ const colors = require('colors');
 const inquirer = require('inquirer');
 
 // Options of the navigations
-const { optMainNavigation, optChangeTasksStatus } = require('./navigationOptions');
+const { optMainNavigation, optChangeTasksStatus, optUpdateTask } = require('./navigationOptions');
 
 // Main navigation
 const mainNavigation = async () => {
@@ -75,9 +75,30 @@ const navigationChangeStatus = async (tasks) => {
   return tasksIds;
 };
 
+// Navigation of update a task
+const navigationUpdateTask = async (tasks) => {
+  const choices = tasks.map((task, index) => {
+    const listPosition = `${index + 1}.`.cyan;
+    const { taskDescription, createdAt, taskCompleted, completedAt } = task;
+    const taskStatus = taskCompleted ? 'Completed'.green : 'Pending'.red;
+    const taskDate = taskCompleted ? 'CompletedAt = ' + `${completedAt}`.cyan : 'CreatedAt = ' + `${createdAt}`.cyan;
+
+    return {
+      name: `${listPosition} ${taskDescription} ${'-'.cyan} ${taskStatus} ${'-'.cyan} ${taskDate}`,
+      value: task.id,
+    };
+  });
+
+  optUpdateTask[0].choices = choices;
+  const { taskToUpdate } = await inquirer.prompt(optUpdateTask);
+
+  return taskToUpdate;
+};
+
 module.exports = {
   mainNavigation,
   stopExecution,
   readDataInput,
   navigationChangeStatus,
+  navigationUpdateTask,
 };
