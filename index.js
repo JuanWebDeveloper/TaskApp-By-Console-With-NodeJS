@@ -26,10 +26,14 @@ const main = async () => {
         break;
 
       case 'listTasks':
+        console.log('\n');
+
         tasks.listTasks();
         break;
 
       case 'changeTasksStatus':
+        console.log('\n');
+
         const tasksIds = await navigationChangeStatus(tasks.convertListToArray);
 
         tasks.changeTasksStatusInDB(tasksIds);
@@ -38,9 +42,15 @@ const main = async () => {
         break;
 
       case 'listCompletedTasks':
+        console.log('\n');
+
+        tasks.listTasksByStatus(true);
         break;
 
       case 'listIncompletedTasks':
+        console.log('\n');
+
+        tasks.listTasksByStatus(false);
         break;
     }
 

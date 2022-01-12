@@ -61,6 +61,29 @@ class Tasks {
       }
     });
   }
+
+  // Method to list the tasks according to their status
+  listTasksByStatus(status) {
+    let listPosition = 0;
+
+    this.convertListToArray.forEach((task) => {
+      const { taskDescription, createdAt, taskCompleted, completedAt } = task;
+      const taskStatus = taskCompleted ? 'Completed'.green : 'Pending'.red;
+      const taskDate = taskCompleted ? 'CompletedAt = ' + `${completedAt}`.cyan : 'CreatedAt = ' + `${createdAt}`.cyan;
+
+      if (status) {
+        if (taskCompleted) {
+          listPosition += 1;
+          console.log(`${(listPosition + '.').cyan} ${taskDescription} ${'-'.cyan} ${taskStatus} ${'-'.cyan} ${taskDate}`);
+        }
+      } else {
+        if (!taskCompleted) {
+          listPosition += 1;
+          console.log(`${(listPosition + '.').cyan} ${taskDescription} ${'-'.cyan} ${taskStatus} ${'-'.cyan} ${taskDate}`);
+        }
+      }
+    });
+  }
 }
 
 module.exports = Tasks;
