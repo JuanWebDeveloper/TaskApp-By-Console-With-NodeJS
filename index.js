@@ -1,9 +1,10 @@
-const { saveDB } = require('./helpers/handleDB');
-const { mainNavigation, stopExecution, readDataInput } = require('./helpers/inquirer');
 const Tasks = require('./models/tasks');
+const { mainNavigation, stopExecution, readDataInput } = require('./helpers/inquirer');
+const { saveDB, readDB } = require('./helpers/handleDB');
 
 const main = async () => {
   const tasks = new Tasks();
+  const tasksInDB = readDB();
 
   let optionSelected = null;
 
