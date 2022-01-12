@@ -52,6 +52,9 @@ const main = async () => {
 
         tasks.listTasksByStatus(false);
         break;
+
+      case 'updateTask':
+        break;
     }
 
     // Save the tasks in the database
