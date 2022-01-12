@@ -1,3 +1,4 @@
+const moment = require('moment');
 const Task = require('./task');
 
 class Tasks {
@@ -27,6 +28,20 @@ class Tasks {
   loadTasksFromDB(tasks) {
     tasks.forEach((task) => {
       this.taskList[task.id] = task;
+    });
+  }
+
+  // Method to list the tasks
+  listTasks() {
+    this.convertListToArray.forEach((task, index) => {
+      const { taskDescription, createdAt, taskCompleted, completedAt } = task;
+      const creationDateFormatted = `${moment(createdAt).format('MMMM Do YYYY, h:mm:ss a')}`.cyan;
+      const completionDateFormatted = completedAt && `${moment(completedAt).format('MMMM Do YYYY, h:mm:ss a')}`.cyan;
+      const listPosition = `${index + 1}.`.cyan;
+      const taskStatus = taskCompleted ? 'Completed'.green : 'Pending'.red;
+      const taskDate = completedAt ? `CompletedAt = ${completionDateFormatted}` : `CreatedAt = ${creationDateFormatted}`;
+
+      console.log(`${listPosition} ${taskDescription} ${'-'.cyan} ${taskStatus} ${'-'.cyan} ${taskDate}`);
     });
   }
 }

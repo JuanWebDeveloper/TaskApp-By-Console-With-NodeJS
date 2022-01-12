@@ -25,7 +25,7 @@ const main = async () => {
         console.log('\n  Task created successfully!  '.white.bgGreen);
         break;
       case 'listTasks':
-        console.log(tasks.convertListToArray);
+        tasks.listTasks();
         break;
     }
 
