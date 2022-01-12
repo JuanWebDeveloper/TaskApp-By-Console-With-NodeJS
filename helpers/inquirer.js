@@ -57,10 +57,13 @@ const readDataInput = async (message) => {
 // Navigation of change the status of tasks
 const navigationChangeStatus = async (tasks) => {
   const choices = tasks.map((task, index) => {
-    const listPosition = `${index + 1}`.cyan;
+    const listPosition = `${index + 1}.`.cyan;
+    const { taskDescription, createdAt, taskCompleted, completedAt } = task;
+    const taskStatus = taskCompleted ? 'Completed'.green : 'Pending'.red;
+    const taskDate = taskCompleted ? 'CompletedAt = ' + `${completedAt}`.cyan : 'CreatedAt = ' + `${createdAt}`.cyan;
 
     return {
-      name: `${listPosition} ${task.taskDescription}`,
+      name: `${listPosition} ${taskDescription} ${'-'.cyan} ${taskStatus} ${'-'.cyan} ${taskDate}`,
       value: task.id,
       checked: task.taskCompleted ? true : false,
     };
