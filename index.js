@@ -1,5 +1,5 @@
 const Tasks = require('./models/tasks');
-const { mainNavigation, stopExecution, readDataInput, navigationChangeStatus, navigationUpdateTask } = require('./helpers/inquirer');
+const { mainNavigation, stopExecution, readDataInput, navigationChangeStatus, navigationToUpdateAndDeleteTasks } = require('./helpers/inquirer');
 const { saveDB, readDB } = require('./helpers/handleDB');
 
 const main = async () => {
@@ -56,7 +56,7 @@ const main = async () => {
       case 'updateTask':
         console.log('\n');
 
-        const taskToUpdate = await navigationUpdateTask(tasks.convertListToArray);
+        const taskToUpdate = await navigationToUpdateAndDeleteTasks(tasks.convertListToArray, 'Select the task to update');
         const taskDescriptionUpdate = await readDataInput('Enter the new task description:');
 
         tasks.updateTaskInDB(taskToUpdate, taskDescriptionUpdate);

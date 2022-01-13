@@ -51,12 +51,12 @@ const optChangeTasksStatus = [
   },
 ];
 
-// Options to update a task
-const optUpdateTask = [
+// Options to update and delete tasks
+const optUpdateAndDeleteTasks = [
   {
     type: 'list',
-    name: 'taskToUpdate',
-    message: 'Select the task to update',
+    name: 'optionIdSelected',
+    message: '',
     choices: [],
   },
 ];
@@ -64,5 +64,5 @@ const optUpdateTask = [
 module.exports = {
   optMainNavigation,
   optChangeTasksStatus,
-  optUpdateTask,
+  optUpdateAndDeleteTasks,
 };
