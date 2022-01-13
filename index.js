@@ -57,7 +57,11 @@ const main = async () => {
         console.log('\n');
 
         const taskToUpdate = await navigationUpdateTask(tasks.convertListToArray);
-        console.log(taskToUpdate);
+        const taskDescriptionUpdate = await readDataInput('Enter the new task description:');
+
+        tasks.updateTaskInDB(taskToUpdate, taskDescriptionUpdate);
+
+        console.log('\n  Task updated successfully!  '.white.bgGreen);
         break;
     }
 

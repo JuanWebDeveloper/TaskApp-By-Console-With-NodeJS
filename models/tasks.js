@@ -84,6 +84,11 @@ class Tasks {
       }
     });
   }
+
+  // Method to update a task in database
+  updateTaskInDB(taskId, taskDescriptionUpdate) {
+    this.taskList[taskId].taskDescription = taskDescriptionUpdate;
+  }
 }
 
 module.exports = Tasks;
