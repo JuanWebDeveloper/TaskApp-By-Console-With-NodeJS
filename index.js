@@ -63,6 +63,10 @@ const main = async () => {
 
         console.log('\n  Task updated successfully!  '.white.bgGreen);
         break;
+
+      case 'deleteTask':
+        const taskToDelete = await navigationToUpdateAndDeleteTasks(tasks.convertListToArray, 'Select the task to delete');
+        break;
     }
 
     // Save the tasks in the database
