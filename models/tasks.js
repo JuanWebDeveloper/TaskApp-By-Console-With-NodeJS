@@ -89,6 +89,11 @@ class Tasks {
   updateTaskInDB(taskId, taskDescriptionUpdate) {
     this.taskList[taskId].taskDescription = taskDescriptionUpdate;
   }
+
+  // Method to delete a task in database
+  deleteTaskInDB(taskId) {
+    this.taskList[taskId] && delete this.taskList[taskId];
+  }
 }
 
 module.exports = Tasks;
