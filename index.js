@@ -57,11 +57,16 @@ const main = async () => {
         console.log('\n');
 
         const taskToUpdate = await navigationToUpdateAndDeleteTasks(tasks.convertListToArray, 'Select the task to update');
-        const taskDescriptionUpdate = await readDataInput('Enter the new task description:');
 
-        tasks.updateTaskInDB(taskToUpdate, taskDescriptionUpdate);
+        if (taskToUpdate !== 'goBack') {
+          const taskDescriptionUpdate = await readDataInput('Enter the new task description:');
 
-        console.log('\n  Task updated successfully!  '.white.bgGreen);
+          tasks.updateTaskInDB(taskToUpdate, taskDescriptionUpdate);
+
+          console.log('\n  Task updated successfully!  '.white.bgGreen);
+        } else {
+          console.log('\n  No task was updated!  '.white.bgGreen);
+        }
         break;
 
       case 'deleteTask':
@@ -69,9 +74,14 @@ const main = async () => {
 
         const taskToDelete = await navigationToUpdateAndDeleteTasks(tasks.convertListToArray, 'Select the task to delete');
 
-        tasks.deleteTaskInDB(taskToDelete);
+        if (taskToDelete !== 'goBack') {
+          tasks.deleteTaskInDB(taskToDelete);
 
-        console.log('\n  Task deleted successfully!  '.white.bgGreen);
+          console.log('\n  Task deleted successfully!  '.white.bgGreen);
+        } else {
+          console.log('\n  No task was deleted!  '.white.bgGreen);
+        }
+
         break;
     }
 

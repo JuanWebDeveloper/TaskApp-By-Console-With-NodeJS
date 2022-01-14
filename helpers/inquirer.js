@@ -89,6 +89,11 @@ const navigationToUpdateAndDeleteTasks = async (tasks, message) => {
     };
   });
 
+  choices.push({
+    name: `${(tasks.length + 1).toString().cyan}. Go back to main menu`,
+    value: 'goBack',
+  });
+
   optUpdateAndDeleteTasks[0].choices = choices;
   optUpdateAndDeleteTasks[0].message = message;
   const { optionIdSelected } = await inquirer.prompt(optUpdateAndDeleteTasks);
