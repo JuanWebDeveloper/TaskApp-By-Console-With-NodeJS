@@ -1,5 +1,12 @@
 const Tasks = require('./models/tasks');
-const { mainNavigation, stopExecution, readDataInput, navigationChangeStatus, navigationToUpdateAndDeleteTasks } = require('./helpers/inquirer');
+const {
+  mainNavigation,
+  stopExecution,
+  readDataInput,
+  navigationChangeStatus,
+  navigationToUpdateAndDeleteTasks,
+  confirmationMessage,
+} = require('./helpers/inquirer');
 const { saveDB, readDB } = require('./helpers/handleDB');
 
 const main = async () => {
@@ -57,8 +64,9 @@ const main = async () => {
         console.log('\n');
 
         const taskToUpdate = await navigationToUpdateAndDeleteTasks(tasks.convertListToArray, 'Select the task to update');
+        const confirmationToUpdate = taskToUpdate !== 'goBack' && (await confirmationMessage('Are you sure you want to update this task?'));
 
-        if (taskToUpdate !== 'goBack') {
+        if (taskToUpdate !== 'goBack' && confirmationToUpdate) {
           const taskDescriptionUpdate = await readDataInput('Enter the new task description:');
 
           tasks.updateTaskInDB(taskToUpdate, taskDescriptionUpdate);
@@ -73,8 +81,9 @@ const main = async () => {
         console.log('\n');
 
         const taskToDelete = await navigationToUpdateAndDeleteTasks(tasks.convertListToArray, 'Select the task to delete');
+        const confirmationToDelete = taskToDelete !== 'goBack' && (await confirmationMessage('Are you sure you want to delete this task?'));
 
-        if (taskToDelete !== 'goBack') {
+        if (taskToDelete !== 'goBack' && confirmationToDelete) {
           tasks.deleteTaskInDB(taskToDelete);
 
           console.log('\n  Task deleted successfully!  '.white.bgGreen);

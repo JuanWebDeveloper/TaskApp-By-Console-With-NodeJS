@@ -101,10 +101,26 @@ const navigationToUpdateAndDeleteTasks = async (tasks, message) => {
   return optionIdSelected;
 };
 
+// Confirmation message before executing an action
+const confirmationMessage = async (message) => {
+  const config = [
+    {
+      type: 'confirm',
+      name: 'confirmation',
+      message,
+    },
+  ];
+
+  const { confirmation } = await inquirer.prompt(config);
+
+  return confirmation;
+};
+
 module.exports = {
   mainNavigation,
   stopExecution,
   readDataInput,
   navigationChangeStatus,
   navigationToUpdateAndDeleteTasks,
+  confirmationMessage,
 };
